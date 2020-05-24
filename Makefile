@@ -29,6 +29,14 @@ $(OBJ): config.h config.mk
 st: $(OBJ)
 	$(CC) -o $@ $(OBJ) $(STLDFLAGS)
 
+revert_changes:
+	@echo "Reverting files"
+	git checkout HEAD -- x.c config.def.h st.c st.h win.h
+
+apply_patches: revert_changes
+	@echo "Applying patches"
+	for i in patches/*.diff; do echo "-> $${i}" && patch -l -s < $$i; done
+
 clean:
 	rm -f st $(OBJ) st-$(VERSION).tar.gz
 
@@ -40,7 +48,7 @@ dist: clean
 	tar -cf - st-$(VERSION) | gzip > st-$(VERSION).tar.gz
 	rm -rf st-$(VERSION)
 
-install: st
+install: apply_patches st
 	mkdir -p $(DESTDIR)$(PREFIX)/bin
 	cp -f st $(DESTDIR)$(PREFIX)/bin
 	chmod 755 $(DESTDIR)$(PREFIX)/bin/st
@@ -49,6 +57,8 @@ install: st
 	chmod 644 $(DESTDIR)$(MANPREFIX)/man1/st.1
 	tic -sx st.info
 	@echo Please see the README file regarding the terminfo entry of st.
+	@echo "Reverting files"
+	git checkout HEAD -- x.c config.def.h st.c st.h win.h
 
 uninstall:
 	rm -f $(DESTDIR)$(PREFIX)/bin/st
