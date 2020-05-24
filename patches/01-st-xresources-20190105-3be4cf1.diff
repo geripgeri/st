@@ -13,7 +13,7 @@ diff --git a/config.def.h b/config.def.h
 index 823e79f..f960cac 100644
 --- a/config.def.h
 +++ b/config.def.h
-@@ -150,6 +150,42 @@ static unsigned int mousebg = 0;
+@@ -150,6 +150,40 @@ static unsigned int mousebg = 0;
   */
  static unsigned int defaultattr = 11;
  
@@ -43,8 +43,6 @@ index 823e79f..f960cac 100644
 +		{ "cursorColor",  STRING,  &colorname[258] },
 +		{ "termname",     STRING,  &termname },
 +		{ "shell",        STRING,  &shell },
-+		{ "xfps",         INTEGER, &xfps },
-+		{ "actionfps",    INTEGER, &actionfps },
 +		{ "blinktimeout", INTEGER, &blinktimeout },
 +		{ "bellvolume",   INTEGER, &bellvolume },
 +		{ "tabspaces",    INTEGER, &tabspaces },
