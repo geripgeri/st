@@ -1,0 +1,10 @@
+language: c
+compiler: cc
+dist: bionic
+sudo: required
+
+before_install:
+  - sudo apt-get -q update
+  - sudo apt-get -y install libxft2
+
+script: sudo make install
