@@ -67,9 +67,9 @@ index 4da3051..cb7101f 100644
 --- a/st.h
 +++ b/st.h
 @@ -80,6 +80,7 @@ void die(const char *, ...);
- void redraw(void);
- void draw(void);
- 
+
+ void kscrolldown(const Arg *);
+ void kscrollup(const Arg *);
 +void externalpipe(const Arg *);
  void printscreen(const Arg *);
  void printsel(const Arg *);
