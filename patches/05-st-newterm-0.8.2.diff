@@ -16,9 +16,9 @@ index 0e01717..31f26d8 100644
 --- a/config.def.h
 +++ b/config.def.h
 @@ -178,6 +178,7 @@ static Shortcut shortcuts[] = {
- 	{ TERMMOD,              XK_Y,           selpaste,       {.i =  0} },
- 	{ ShiftMask,            XK_Insert,      selpaste,       {.i =  0} },
  	{ TERMMOD,              XK_Num_Lock,    numlock,        {.i =  0} },
+ 	{ ShiftMask,            XK_Page_Up,     kscrollup,      {.i = -1} },
+ 	{ ShiftMask,            XK_Page_Down,   kscrolldown,    {.i = -1} },
 +	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },
  };
  
@@ -71,9 +71,9 @@ index 38c61c4..54d4a43 100644
  void draw(void);
  
 +void newterm(const Arg *);
- void printscreen(const Arg *);
- void printsel(const Arg *);
- void sendbreak(const Arg *);
+ void kscrolldown(const Arg *);
+ void kscrollup(const Arg *);
+ void externalpipe(const Arg *);
 -- 
 2.19.2
 
