@@ -50,7 +50,7 @@ index 1dc44d6..bf280fe 100644
 @@ -1528,13 +1528,20 @@ xdrawcursor(int cx, int cy, Glyph g, int ox, int oy, Glyph og)
  		switch (win.cursor) {
  		case 7: /* st extension: snowman (U+2603) */
- 			g.u = 0x2603;
+ 			g.u = 0x2603; /* snowman (U+2603) */
 -			/* FALLTHROUGH */
 +			xdrawglyph(g, cx, cy);
 +			break;
@@ -113,8 +113,8 @@ index 1dc44d6..bf280fe 100644
  {
  	xw.l = xw.t = 0;
  	xw.isfixed = False;
--	win.cursor = cursorshape;
-+	win.cursor = cursorstyle;
+-	xsetcursor(cursorshape);
++	xsetcursor(cursorstyle);
  
  	ARGBEGIN {
  	case 'a':
